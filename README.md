@@ -110,15 +110,71 @@ AI reads alarms and historical data on demand:
 
 ---
 
-## Real-World Result
+## Real-World Case Study: JCI T8600 Modbus Thermostat
 
-The process above was tested on a **T8600 Modbus thermostat** connected to a Niagara 4.14 station:
+This is our flagship AI automation demonstration — a fully autonomous integration of a **Johnson Controls T8600 Modbus thermostat** into a Niagara 4.14 station.
 
-- **6 register types** (holding, input, coil, discrete) auto-detected and configured
-- **6 points** created, named, and linked in under 2 minutes
-- **PX dashboard** deployed and displaying live data
-- **Remote write** (set temperature, fan speed, on/off) working through browser
-- **Zero manual operations** — AI completed the entire integration autonomously
+### Tools Used
+
+| Tool | Role |
+|------|------|
+| **DeepSeek V4 Flash** | AI reasoning engine |
+| **OpenClaw** | AI agent framework |
+| **Gline REST API** | Component lifecycle (ADD, MOD, CP, RENAME, LINK) |
+| **oBIX** | Configure proxyExt (register address, type, function code) |
+| **Gline FTP Server** | Deploy generated PX/HTML pages to station |
+
+### The AI Workflow (Fully Autonomous)
+
+```
+Step 1  User tells AI: "Integrate JCI T8600 thermostat at 192.168.x.x"
+         ↓
+Step 2  AI searches the internet for T8600 Modbus register map
+         (discovers holding/input/coil/discrete registers automatically)
+         ↓
+Step 3  AI connects to the Niagara station via REST API
+         ↓
+Step 4  AI scans existing Modbus network - finds the thermostat device
+         ↓
+Step 5  AI adds a new Device under the Modbus network via REST API ADD
+         ↓
+Step 6  AI creates ModbusClient points with correct register addresses
+         (Set_Temp, Zone_Temp, Fan_Speed, On_Off, Filter_Status, Supply_Air_T)
+         ↓
+Step 7  AI configures each point's proxyExt via oBIX PUT
+         (dataAddress, regType, dataType)
+         ↓
+Step 8  AI names all points properly via REST API RENAME
+         ↓
+Step 9  AI generates a PX dashboard (or BajaScript HTML page)
+         with bound labels showing all 6 point values
+         ↓
+Step 10 AI uploads the page to station via FTP Server
+         ↓
+Step 11 AI logs into the station web interface, opens the page, verifies it works
+         ↓
+Step 12 If errors found, AI generates a fixed page and re-uploads via FTP
+         ↓
+        ✅ Complete! Real-time dashboard live, remote writable
+```
+
+### What This Means
+
+| Before AI Automation | After AI Automation |
+|----------------------|---------------------|
+| Manual Modbus register mapping | AI searches spec sheets automatically |
+| Manual point creation (drag-drop in Workbench) | AI creates via REST API in milliseconds |
+| Manual proxyExt configuration | AI configures via oBIX in seconds |
+| Manual PX binding and UI design | AI generates PX/HTML pages autonomously |
+| Manual FTP upload and testing | AI uploads, verifies, and fixes errors |
+| **Hours to days** per device | **Minutes** per device |
+| **$500-$2,000+** in engineering labor | **$0.03-0.05** in AI token cost |
+
+### Cost
+
+On **DeepSeek V4 Flash**, the entire T8600 integration consumes approximately **a few cents (USD)** in AI tokens. The same work traditionally requires hours of a Niagara engineer's time.
+
+> **The bottom line:** Point binding, UI creation, and Modbus device integration are no longer time-consuming tasks. AI handles the entire pipeline — from register discovery to live dashboard deployment.
 
 ---
 
