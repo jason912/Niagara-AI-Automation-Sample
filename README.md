@@ -15,7 +15,7 @@ We have built and tested an **AI-powered automation pipeline** for Niagara 4 tha
 | API | Port | Auth | Cost |
 |-----|:----:|:----:|:----:|
 | **oBIX** | 80/443 | SCRAM-SHA-256 / HTTP Basic | 🆓 Free (built-in) |
-| **Gline REST API** | 8081 | None (LAN) | 🆓 Free (no SMA required) |
+| **Gline REST API** | Configurable (default 8081) | None (LAN) | 🆓 Free (no SMA required) |
 
 The AI (tested on **DeepSeek**) acts as a Niagara engineer — it reads the station structure, decides what operations to perform, then executes them via REST API and oBIX calls. No human in the loop.
 
@@ -43,20 +43,12 @@ After creating points, AI binds them to PX visualization pages:
 
 ### ✅ Automated Module Addition
 
-AI can deploy and wire new modules into your station program - with one prerequisite.
+AI can deploy new modules and services to the station:
 
-**Prerequisite:** Drag the required component(s) from the Workbench Palette into a wiresheet manually once. This gives the station a "template" of the module.
-
-**Then AI handles the rest:**
-
-1. AI finds the template component in the wiresheet
-2. AI copies it via `DUPLICATE` / `CP` operation
-3. AI pastes it into the correct folder location
-4. AI configures parameters via `MOD`
-5. AI creates Links to wire it into the program logic
-6. AI verifies the module is running via `READ`
-
-> **Current limitation:** AI cannot drag components from the Palette like Workbench does. It can only copy, move, configure, and wire existing components. Think of it as a "copy + configure" assistant rather than a "drag from scratch" tool.
+1. Copy JAR to modules directory
+2. AI creates the required service component via `ADD`
+3. AI configures service parameters via `MOD`
+4. AI verifies the service is running via `READ`
 
 ### ✅ Automated Alarm & History Queries
 
