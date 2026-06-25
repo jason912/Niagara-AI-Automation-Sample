@@ -12,10 +12,10 @@
 
 This repository demonstrates a **sample AI automation process** for Niagara 4 using Gline's free modules. It shows how AI can:
 
-- Auto-discover Modbus/BACnet devices and collect data points
+- Auto-discover Modbus devices and collect data points
 - Create and configure points via REST API
 - Generate PX/HTML web pages automatically
-- Deploy and verify pages via FTP Server
+- Deploy and verify pages via FTP Server (auto-login via SCRAM, verify bindings, fix errors)
 
 The entire workflow runs on **DeepSeek V4 Flash + OpenClaw** and costs only cents in AI tokens.
 
@@ -158,9 +158,10 @@ Step 9  AI generates a PX dashboard (or BajaScript HTML page)
          ↓
 Step 10 AI uploads the page to station via FTP Server
          ↓
-Step 11 AI logs into the station web interface, opens the page, verifies it works
+Step 11 AI authenticates via SCRAM (same as a human logging into the web UI),
+         inspects the PX/HTML file, checks bindings, verifies data displays correctly
          ↓
-Step 12 If errors found, AI generates a fixed page and re-uploads via FTP
+Step 12 If errors found, AI generates a corrected page and re-uploads via FTP Server
          ↓
         ✅ Complete! Real-time dashboard live, remote writable
 ```
