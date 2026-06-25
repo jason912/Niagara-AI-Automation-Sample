@@ -15,7 +15,7 @@ We have built and tested an **AI-powered automation pipeline** for Niagara 4 tha
 | API | Port | Auth | Cost |
 |-----|:----:|:----:|:----:|
 | **oBIX** | 80/443 | SCRAM-SHA-256 / HTTP Basic | 🆓 Free (built-in) |
-| **Gline REST API** | Configurable (default 8081) | None (LAN) | 🆓 Free (no SMA required) |
+| **Gline REST API** | 8081 | None (LAN) | 🆓 Free (no SMA required) |
 
 The AI (tested on **DeepSeek**) acts as a Niagara engineer — it reads the station structure, decides what operations to perform, then executes them via REST API and oBIX calls. No human in the loop.
 
@@ -132,6 +132,8 @@ The process above was tested on a **T8600 Modbus thermostat** connected to a Nia
 > The current capability is offered free of charge — we want to demonstrate what's possible. If you see value and want us to build a custom automation pipeline for your Niagara system, we'd be happy to discuss.
 
 ---
+
+> **Need a custom REST API for your AI workflow?** The free Gline REST API covers common operations. If you need custom endpoints, advanced security, or specialized data pipelines for AI automation — we can build it. Contact us for a discussion.
 
 ## Requirements
 
