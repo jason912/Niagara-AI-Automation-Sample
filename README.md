@@ -10,6 +10,8 @@
 
 ## What Is This?
 
+> **Key enabler:** The Gline REST API can configure **Modbus client proxyExt addresses** (dataAddress, regType, dataType) remotely. This means AI can create a Modbus point AND set its register address in one automated flow — no manual Workbench steps required for Modbus point configuration.
+
 This repository demonstrates a **sample AI automation process** for Niagara 4 using Gline's free modules. It shows how AI can:
 
 - Auto-discover Modbus devices and collect data points
